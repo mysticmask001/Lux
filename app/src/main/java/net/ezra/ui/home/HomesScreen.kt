@@ -170,7 +170,7 @@ fun HomesScreen(navController: NavHostController) {
                     ) {
 
                         Image(
-                            painter = painterResource(id = R.drawable.ck),
+                            painter = painterResource(id = R.drawable.beverly1),
                             contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
@@ -187,11 +187,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "Beverly", color = Color.White)
+                            Text(text = "WaterMark", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "$3.00", color = Color.White)
+                            Text(text = "KAREN", color = Color.White)
                         }
 
                         Row(
@@ -200,11 +200,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
+                            Text(text = "KSH 100.00 PSF", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
+                            Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
                         }
 
@@ -258,18 +258,18 @@ fun HomesScreen(navController: NavHostController) {
 
                         Row {
 
-                            Button(onClick = {},
+                            Button(onClick = {
+                                navController.navigate(ROUTE_CONTACT) {
+                                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                                }
+                            },
 
 
                                 modifier = Modifier
 
                                     .fillMaxSize()
                                     .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
+
                                 )
                             {
 
@@ -286,8 +286,6 @@ fun HomesScreen(navController: NavHostController) {
 
                     Spacer(modifier = Modifier.height(5.dp))
 
-
-
                     Card(
                         elevation = CardDefaults.cardElevation(10.dp),
                         modifier = Modifier
@@ -295,7 +293,7 @@ fun HomesScreen(navController: NavHostController) {
                     ) {
 
                         Image(
-                            painter = painterResource(id = R.drawable.ck),
+                            painter = painterResource(id = R.drawable.beverly1),
                             contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
@@ -312,11 +310,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "Beverly", color = Color.White)
+                            Text(text = "WaterMark", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "$3.00", color = Color.White)
+                            Text(text = "KAREN", color = Color.White)
                         }
 
                         Row(
@@ -325,11 +323,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
+                            Text(text = "KSH 100.00 PSF", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
+                            Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
                         }
 
@@ -383,18 +381,18 @@ fun HomesScreen(navController: NavHostController) {
 
                         Row {
 
-                            Button(onClick = {},
+                            Button(onClick = {
+                                navController.navigate(ROUTE_CONTACT) {
+                                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                                }
+                            },
 
 
                                 modifier = Modifier
 
                                     .fillMaxSize()
                                     .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
+
                             )
                             {
 
@@ -411,9 +409,6 @@ fun HomesScreen(navController: NavHostController) {
 
                     Spacer(modifier = Modifier.height(5.dp))
 
-
-
-
                     Card(
                         elevation = CardDefaults.cardElevation(10.dp),
                         modifier = Modifier
@@ -421,7 +416,7 @@ fun HomesScreen(navController: NavHostController) {
                     ) {
 
                         Image(
-                            painter = painterResource(id = R.drawable.ck),
+                            painter = painterResource(id = R.drawable.beverly1),
                             contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
@@ -438,11 +433,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "Beverly", color = Color.White)
+                            Text(text = "WaterMark", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "$3.00", color = Color.White)
+                            Text(text = "KAREN", color = Color.White)
                         }
 
                         Row(
@@ -451,11 +446,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
+                            Text(text = "KSH 100.00 PSF", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
+                            Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
                         }
 
@@ -509,18 +504,18 @@ fun HomesScreen(navController: NavHostController) {
 
                         Row {
 
-                            Button(onClick = {},
+                            Button(onClick = {
+                                navController.navigate(ROUTE_CONTACT) {
+                                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                                }
+                            },
 
 
                                 modifier = Modifier
 
                                     .fillMaxSize()
                                     .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
+
                             )
                             {
 
@@ -537,8 +532,6 @@ fun HomesScreen(navController: NavHostController) {
 
                     Spacer(modifier = Modifier.height(5.dp))
 
-
-
                     Card(
                         elevation = CardDefaults.cardElevation(10.dp),
                         modifier = Modifier
@@ -546,7 +539,7 @@ fun HomesScreen(navController: NavHostController) {
                     ) {
 
                         Image(
-                            painter = painterResource(id = R.drawable.ck),
+                            painter = painterResource(id = R.drawable.beverly1),
                             contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
@@ -563,11 +556,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "Beverly", color = Color.White)
+                            Text(text = "WaterMark", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "$3.00", color = Color.White)
+                            Text(text = "KAREN", color = Color.White)
                         }
 
                         Row(
@@ -576,11 +569,11 @@ fun HomesScreen(navController: NavHostController) {
                                 .background(color = Color.DarkGray)
                                 .padding(5.dp)
                         ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
+                            Text(text = "KSH 100.00 PSF", color = Color.White)
 
                             Spacer(modifier = Modifier.width(250.dp))
 
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
+                            Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
                         }
 
@@ -634,18 +627,18 @@ fun HomesScreen(navController: NavHostController) {
 
                         Row {
 
-                            Button(onClick = {},
+                            Button(onClick = {
+                                navController.navigate(ROUTE_CONTACT) {
+                                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                                }
+                            },
 
 
                                 modifier = Modifier
 
                                     .fillMaxSize()
                                     .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
+
                             )
                             {
 
@@ -663,377 +656,6 @@ fun HomesScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(5.dp))
 
 
-
-                    Card(
-                        elevation = CardDefaults.cardElevation(10.dp),
-                        modifier = Modifier
-                            .background(color = Color.DarkGray)
-                    ) {
-
-                        Image(
-                            painter = painterResource(id = R.drawable.ck),
-                            contentDescription = "null"
-//                            imageslider = findViewById(R.drawable.)
-//
-//
-//                            ArrayList<slideModel> Images = new ArrayList<>()
-//
-//                            images(add new slide)
-
-                        )
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "Beverly", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "$3.00", color = Color.White)
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
-
-                        }
-
-
-
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(10.dp)
-                        ) {
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
-//                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
-
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Beds")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-                            Button(onClick = {}) {
-//                                Icon(
-//                                    imageVector = Icons.Default.Person,
-//                                    contentDescription = "null"
-//                                )
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Baths")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "2 Cams")
-                            }
-                        }
-
-                        Spacer(
-                            modifier = Modifier.height(1.dp)
-                        )
-
-
-                        Row {
-
-                            Button(onClick = {},
-
-
-                                modifier = Modifier
-
-                                    .fillMaxSize()
-                                    .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
-                            )
-                            {
-
-                                Text(text = "Talk to us")
-                            }
-
-                        }
-
-
-
-
-
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-
-                    Card(
-                        elevation = CardDefaults.cardElevation(10.dp),
-                        modifier = Modifier
-                            .background(color = Color.DarkGray)
-                    ) {
-
-                        Image(
-                            painter = painterResource(id = R.drawable.ck),
-                            contentDescription = "null"
-//                            imageslider = findViewById(R.drawable.)
-//
-//
-//                            ArrayList<slideModel> Images = new ArrayList<>()
-//
-//                            images(add new slide)
-
-                        )
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "Beverly", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "$3.00", color = Color.White)
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
-
-                        }
-
-
-
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(10.dp)
-                        ) {
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
-//                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
-
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Beds")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-                            Button(onClick = {}) {
-//                                Icon(
-//                                    imageVector = Icons.Default.Person,
-//                                    contentDescription = "null"
-//                                )
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Baths")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "2 Cams")
-                            }
-                        }
-
-                        Spacer(
-                            modifier = Modifier.height(1.dp)
-                        )
-
-
-                        Row {
-
-                            Button(onClick = {},
-
-
-                                modifier = Modifier
-
-                                    .fillMaxSize()
-                                    .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
-                            )
-                            {
-
-                                Text(text = "Talk to us")
-                            }
-
-                        }
-
-
-
-
-
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
-
-
-                    Card(
-                        elevation = CardDefaults.cardElevation(10.dp),
-                        modifier = Modifier
-                            .background(color = Color.DarkGray)
-                    ) {
-
-                        Image(
-                            painter = painterResource(id = R.drawable.ck),
-                            contentDescription = "null"
-//                            imageslider = findViewById(R.drawable.)
-//
-//
-//                            ArrayList<slideModel> Images = new ArrayList<>()
-//
-//                            images(add new slide)
-
-                        )
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "Beverly", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "$3.00", color = Color.White)
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(5.dp)
-                        ) {
-                            Text(text = "115 Brooke, USA", color = Color.White)
-
-                            Spacer(modifier = Modifier.width(250.dp))
-
-                            Text(text = "1159sqm", color = Color.White, fontFamily = FontFamily.Monospace)
-
-                        }
-
-
-
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-                                .padding(10.dp)
-                        ) {
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
-//                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
-
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Beds")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-                            Button(onClick = {}) {
-//                                Icon(
-//                                    imageVector = Icons.Default.Person,
-//                                    contentDescription = "null"
-//                                )
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "3 Baths")
-                            }
-
-                            Spacer(modifier = Modifier.width(20.dp))
-
-
-                            Button(onClick = {}) {
-//                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
-//
-//                                Spacer(modifier = Modifier.width(2.dp))
-
-                                Text(text = "2 Cams")
-                            }
-                        }
-
-                        Spacer(
-                            modifier = Modifier.height(1.dp)
-                        )
-
-
-                        Row {
-
-                            Button(onClick = {},
-
-
-                                modifier = Modifier
-
-                                    .fillMaxSize()
-                                    .background(color = Color.DarkGray)
-                                    .clickable {
-                                        navController.navigate(ROUTE_CONTACT) {
-                                            popUpTo(ROUTE_HOMES) { inclusive = true }
-                                        }
-                                    }
-                            )
-                            {
-
-                                Text(text = "Talk to us")
-                            }
-
-                        }
-
-
-
-
-
-                    }
-
-                    Spacer(modifier = Modifier.height(5.dp))
 
 
 

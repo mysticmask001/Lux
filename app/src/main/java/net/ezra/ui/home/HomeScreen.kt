@@ -94,61 +94,66 @@ fun HomeScreen(navController: NavHostController) {
 
 
 
-                    Row {
-                        Button(onClick = {},
-
-
-                            modifier = Modifier
-
-
-                                .clickable {
-                                    navController.navigate(ROUTE_LOGIN) {
-                                        popUpTo(ROUTE_HOME) { inclusive = true }
-                                    }
-                                }
-                        )
-                        {
-
-                            Text(text = "Log in")
-                        }
-
-
-
-                        Spacer(modifier = Modifier.width(10.dp))
-
-                        Button(onClick = {},
-
-
-                            modifier = Modifier
-
-
-                                .clickable {
-                                    navController.navigate(ROUTE_SIGNUP) {
-                                        popUpTo(ROUTE_HOME) { inclusive = true }
-                                    }
-                                }
-                        )
-                        {
-
-                            Text(text = "Sign up")
-
-
-                        }
-
-                    }
+//                    Row {
+//                        Button(onClick = {},
+//
+//
+//                            modifier = Modifier
+//
+//
+//                                .clickable {
+//                                    navController.navigate(ROUTE_LOGIN) {
+//                                        popUpTo(ROUTE_HOME) { inclusive = true }
+//                                    }
+//                                }
+//                        )
+//                        {
+//
+//                            Text(text = "Log in")
+//                        }
+//
+//
+//
+//                        Spacer(modifier = Modifier.width(10.dp))
+//
+//                        Button(onClick = {},
+//
+//
+//                            modifier = Modifier
+//
+//
+//                                .clickable {
+//                                    navController.navigate(ROUTE_SIGNUP) {
+//                                        popUpTo(ROUTE_HOME) { inclusive = true }
+//                                    }
+//                                }
+//                        )
+//                        {
+//
+//                            Text(text = "Sign up")
+//
+//
+//                        }
+//
+//                    }
                     Spacer(modifier = Modifier.height(70.dp))
 
 
-                    Button(onClick = {},
+                    Button(onClick = {
+                        navController.navigate(ROUTE_HOMES) {
+                            popUpTo(ROUTE_HOME) { inclusive = true }
+
+                        }
+                    }
 
 
-                        modifier = Modifier
-
-                            .clickable {
-                                navController.navigate(ROUTE_HOMES) {
-                                    popUpTo(ROUTE_HOME) { inclusive = true }
-                                }
-                            }
+//                        modifier = Modifier
+//
+//                            .clickable {
+//                                navController.navigate(ROUTE_HOMES) {
+//                                    popUpTo(ROUTE_HOME) { inclusive = true }
+//                                }
+//                            }
                     )
                     {
 
