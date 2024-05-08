@@ -14,6 +14,10 @@ const val ROUTE_ADD_STUDENTS = "add_students"
 const val ROUTE_SPLASH = "splash"
 const val ROUTE_VIEW_STUDENTS = "view_students"
 const val ROUTE_HOME= "home"
+const val ROUTE_PROFILE= "profile"
+const val ROUTE_SETTINGS= "settings"
+
+
 
 
 
