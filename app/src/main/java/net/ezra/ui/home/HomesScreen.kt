@@ -59,7 +59,9 @@ import net.ezra.R
 import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_BUNGALOW
 import net.ezra.navigation.ROUTE_CONTACT
+import net.ezra.navigation.ROUTE_LOGIN
 import net.ezra.navigation.ROUTE_RANCH
+import net.ezra.navigation.ROUTE_SPLASH
 import net.ezra.navigation.ROUTE_VILLA
 import net.ezra.ui.apartments.ApartScreen
 import net.ezra.ui.villa.VillaScreen
@@ -76,24 +78,24 @@ fun HomesScreen(navController: NavHostController) {
                 title = {
                     Row() {
                         Text(
-                            text = "Title 1",
+                            text = "",
                             fontSize = 30.sp,
                             color = Color.Red
                         )
                         Text(
-                            text = " Title 2",
+                            text = " LUX",
                             fontSize = 30.sp,
                             color = Color.White
                         )
 
                     }
                 },
-                navigationIcon = {
-                    IconButton(onClick = {}) {
-                        Icon(Icons.Filled.ArrowBack, "backIcon")
-                    }
-                },
-                backgroundColor = MaterialTheme.colors.primary,
+//                navigationIcon = {
+//                    IconButton(onClick = {}) {
+//                        Icon(Icons.Filled.ArrowBack, "backIcon")
+//                    }
+//                },
+                backgroundColor = Color.Black,
                 contentColor = Color.White,
                 elevation = 10.dp
             )
@@ -739,25 +741,29 @@ fun HomesScreen(navController: NavHostController) {
 @Composable
 fun BottomBar(navController: NavHostController) {
     val selectedIndex = remember { mutableStateOf(0) }
-    BottomNavigation(elevation = 10.dp) {
+    BottomNavigation(elevation = 10.dp,
+        backgroundColor = Color.LightGray) {
         BottomNavigationItem(icon = {
             Icon(imageVector = Icons.Default.Home,"")
         },
             label = { Text(text = "Home") }, selected = (selectedIndex.value == 0), onClick = {
-                selectedIndex.value = 0
-            })
+                navController.navigate(ROUTE_HOMES) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+            }})
         BottomNavigationItem(icon = {
             Icon(imageVector = Icons.Default.Favorite,"")
         },
             label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
-                selectedIndex.value = 1
-            })
+                navController.navigate(ROUTE_APART) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
         BottomNavigationItem(icon = {
             Icon(imageVector = Icons.Default.Person, "")
         },
             label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
-                selectedIndex.value = 2
-            })
+                navController.navigate(ROUTE_LOGIN) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
     }
 }
 
