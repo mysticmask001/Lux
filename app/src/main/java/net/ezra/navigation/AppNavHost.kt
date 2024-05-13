@@ -13,6 +13,7 @@ import net.ezra.ui.apartments.ApartScreen
 import net.ezra.ui.apartments.HomeScreenPreviewLight
 import net.ezra.ui.bungalows.BungalowScreen
 import net.ezra.ui.contact.ContactScreen
+import net.ezra.ui.form.AddStudents
 import net.ezra.ui.home.HomeScreen
 import net.ezra.ui.home.HomesScreen
 import net.ezra.ui.login.LoginScreen
@@ -21,8 +22,6 @@ import net.ezra.ui.ranch.RanchScreen
 import net.ezra.ui.mit.MitScreen
 
 import net.ezra.ui.services.ServicesScreen
-import net.ezra.ui.students.AddStudents
-import net.ezra.ui.students.StudentList
 
 
 @Composable
@@ -89,15 +88,10 @@ fun AppNavHost(
         composable(ROUTE_RANCH) {
             RanchScreen(navController)
         }
+
         composable(ROUTE_ADD_STUDENTS) {
             AddStudents(navController)
         }
-
-        composable(ROUTE_VIEW_STUDENTS) {
-            StudentList(navController = navController, viewModel = viewModel())
-        }
-
-
 
 
 

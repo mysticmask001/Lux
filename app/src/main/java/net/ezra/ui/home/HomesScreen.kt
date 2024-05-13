@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.BottomNavigation
@@ -56,6 +57,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.webkit.Profile
 import net.ezra.navigation.ROUTE_HOMES
 import net.ezra.R
+import net.ezra.navigation.ROUTE_ADD_STUDENTS
 import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_BUNGALOW
 import net.ezra.navigation.ROUTE_CONTACT
@@ -67,39 +69,44 @@ import net.ezra.ui.apartments.ApartScreen
 import net.ezra.ui.villa.VillaScreen
 
 
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomesScreen(navController: NavHostController) {
 
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Row() {
-                        Text(
-                            text = "",
-                            fontSize = 30.sp,
-                            color = Color.Red
-                        )
-                        Text(
-                            text = " LUX",
-                            fontSize = 30.sp,
-                            color = Color.White
-                        )
 
-                    }
-                },
-//                navigationIcon = {
-//                    IconButton(onClick = {}) {
-//                        Icon(Icons.Filled.ArrowBack, "backIcon")
+
+
+    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = {
+//                    Row() {
+//                        Text(
+//                            text = "",
+//                            fontSize = 30.sp,
+//                            color = Color.Red
+//                        )
+//                        Text(
+//                            text = " LUX",
+//                            fontSize = 30.sp,
+//                            color = Color.White
+//                        )
+//
 //                    }
 //                },
-                backgroundColor = Color.Black,
-                contentColor = Color.White,
-                elevation = 10.dp
-            )
-        }, content = {
+////                navigationIcon = {
+////                    IconButton(onClick = {}) {
+////                        Icon(Icons.Filled.ArrowBack, "backIcon")
+////                    }
+////                },
+//                backgroundColor = Color.Black,
+//                contentColor = Color.White,
+//                elevation = 10.dp
+//            )
+//        },
+content = {
             LazyColumn {
                 item {
                     Box(
@@ -214,6 +221,18 @@ fun HomesScreen(navController: NavHostController) {
                                                 }
                                             },
                                         text = "Ranch-Style(60)"
+                                    )
+
+                                    Spacer(modifier = Modifier.width(30.dp))
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_ADD_STUDENTS) {
+                                                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                                                }
+                                            },
+                                        text = "View-all"
                                     )
                                 }
                             }
@@ -733,10 +752,6 @@ fun HomesScreen(navController: NavHostController) {
 
     )
 }
-
-
-
-
 
 @Composable
 fun BottomBar(navController: NavHostController) {

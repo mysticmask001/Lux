@@ -144,6 +144,21 @@ fun LoginScreen(navController: NavController) {
             Text(text = "Do not have an account?", color = Color.White)
 
 
+            Text(
+                modifier = Modifier
+                    .clickable {
+                        navController.navigate(ROUTE_SIGNUP) {
+                            popUpTo(ROUTE_LOGIN) { inclusive = true }
+                        }
+                    },
+                text = "Click here to sign up",
+                color = Color.White
+
+
+            )
+
+
+
             Spacer(modifier = Modifier.height(2.dp))
 
             Button(

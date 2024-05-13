@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586328386721",
+    "project_id": "luxury-c3f64",
+    "storage_bucket": "luxury-c3f64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586328386721:android:5dbc08e2d87668274814e0",
+        "android_client_info": {
+          "package_name": "net.ezra.ui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxWyJFxQ-Kr55UeTsoSo_jtYvX_GxKLIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

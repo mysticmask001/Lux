@@ -174,7 +174,7 @@ fun SignupScreen(navController: NavHostController) {
                 modifier = Modifier
                     .clickable {
                         navController.navigate(ROUTE_LOGIN) {
-                            popUpTo(ROUTE_HOMES) { inclusive = true }
+                            popUpTo(ROUTE_SIGNUP) { inclusive = true }
                         }
                     },
                 text = "Click here to login",
