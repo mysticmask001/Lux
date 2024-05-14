@@ -1,6 +1,7 @@
 package net.ezra.ui.apartments
 
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,17 +9,23 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -33,133 +40,138 @@ import net.ezra.navigation.ROUTE_HOMES
 import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_BUNGALOW
 import net.ezra.navigation.ROUTE_CONTACT
+import net.ezra.navigation.ROUTE_LOGIN
 import net.ezra.navigation.ROUTE_RANCH
 import net.ezra.navigation.ROUTE_VILLA
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ApartScreen(navController: NavHostController) {
 
-    LazyColumn {
-        item {
+    Scaffold (
+        content = {
 
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
+            LazyColumn {
+                item {
 
-
-                Image(
-                    painter = painterResource(
-                        id = R.drawable.bg
-                    ),
-                    contentDescription = "null",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .fillMaxSize()
-
-
-            ) {
-
-                Row {
-                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
-
-                    Spacer(modifier = Modifier.width(150.dp))
-
-                    Text(
-                        text = "APARTMENTS",
+                    Box(
                         modifier = Modifier
                             .fillMaxSize()
-                    )
+                    ) {
 
-                    Spacer(modifier = Modifier.width(150.dp))
 
-                    Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "")
-                }
-                LazyRow {
-                    item {
+                        Image(
+                            painter = painterResource(
+                                id = R.drawable.bg
+                            ),
+                            contentDescription = "null",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .fillMaxSize()
 
-                            Text(
+
+                        ) {
+
+                            Row {
+                                Icon(imageVector = Icons.Default.Home, contentDescription = "")
+
+                                Spacer(modifier = Modifier.width(150.dp))
+
+                                Text(
+                                    text = "APARTMENTS",
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                )
+
+                                Spacer(modifier = Modifier.width(150.dp))
+
+                                Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "")
+                            }
+                            LazyRow {
+                                item {
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_HOMES) {
+                                                    popUpTo(ROUTE_APART) { inclusive = true }
+                                                }
+                                            },
+                                        text = "Houses(100)"
+                                    )
+
+
+
+                                    Spacer(modifier = Modifier.width(30.dp))
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_APART) {
+                                                    popUpTo(ROUTE_APART) { inclusive = true }
+                                                }
+                                            },
+                                        text = "Apartments(404)"
+                                    )
+
+
+                                    Spacer(modifier = Modifier.width(30.dp))
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_VILLA) {
+                                                    popUpTo(ROUTE_APART) { inclusive = true }
+                                                }
+                                            },
+                                        text = "Villa(305)"
+                                    )
+
+                                    Spacer(modifier = Modifier.width(30.dp))
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_BUNGALOW) {
+                                                    popUpTo(ROUTE_APART) { inclusive = true }
+                                                }
+                                            },
+                                        text = "Bungalows(200)"
+                                    )
+
+
+
+                                    Spacer(modifier = Modifier.width(30.dp))
+
+                                    Text(
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_RANCH) {
+                                                    popUpTo(ROUTE_APART) { inclusive = true }
+                                                }
+                                            },
+                                        text = "Ranch-Style(60)"
+                                    )
+
+                                }
+                            }
+
+
+                            Card(
+                                elevation = CardDefaults.cardElevation(10.dp),
                                 modifier = Modifier
-                                    .clickable {
-                                        navController.navigate(ROUTE_HOMES) {
-                                            popUpTo(ROUTE_APART) { inclusive = true }
-                                        }
-                                    },
-                                text = "Houses(100)"
-                            )
+                                    .background(color = Color.DarkGray)
+                            ) {
 
-
-
-                            Spacer(modifier = Modifier.width(30.dp))
-
-                            Text(
-                                modifier = Modifier
-                                    .clickable {
-                                        navController.navigate(ROUTE_APART) {
-                                            popUpTo(ROUTE_APART) { inclusive = true }
-                                        }
-                                    },
-                                text = "Apartments(404)"
-                            )
-
-
-                            Spacer(modifier = Modifier.width(30.dp))
-
-                            Text(
-                                modifier = Modifier
-                                    .clickable {
-                                        navController.navigate(ROUTE_VILLA) {
-                                            popUpTo(ROUTE_APART) { inclusive = true }
-                                        }
-                                    },
-                                text = "Villa(305)"
-                            )
-
-                            Spacer(modifier = Modifier.width(30.dp))
-
-                            Text(
-                                modifier = Modifier
-                                    .clickable {
-                                        navController.navigate(ROUTE_BUNGALOW) {
-                                            popUpTo(ROUTE_APART) { inclusive = true }
-                                        }
-                                    },
-                                text = "Bungalows(200)"
-                            )
-
-
-
-                            Spacer(modifier = Modifier.width(30.dp))
-
-                            Text(
-                                modifier = Modifier
-                                    .clickable {
-                                        navController.navigate(ROUTE_RANCH) {
-                                            popUpTo(ROUTE_APART) { inclusive = true }
-                                        }
-                                    },
-                                text = "Ranch-Style(60)"
-                            )
-
-                    }
-                }
-
-
-                Card(
-                    elevation = CardDefaults.cardElevation(10.dp),
-                    modifier = Modifier
-                        .background(color = Color.DarkGray)
-                ) {
-
-                    Image(
-                        painter = painterResource(id = R.drawable.beverly7),
-                        contentDescription = "null"
+                                Image(
+                                    painter = painterResource(id = R.drawable.beverly7),
+                                    contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -167,56 +179,56 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                    )
+                                )
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "ENAKI", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "ENAKI", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "Nyari, Gigiri", color = Color.White)
-                    }
+                                    Text(text = "Nyari, Gigiri", color = Color.White)
+                                }
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "KSH 100,000.00", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "KSH 100,000.00", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                    Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                    }
-
-
+                                }
 
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(10.dp)
-                    ) {
-                        Button(onClick = {}) {
+
+
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(10.dp)
+                                ) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "4 Beds")
-                        }
+                                        Text(text = "4 Beds")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -224,66 +236,66 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "4 Baths")
-                        }
+                                        Text(text = "4 Baths")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "2 Cams")
-                        }
-                    }
+                                        Text(text = "2 Cams")
+                                    }
+                                }
 
-                    Spacer(
-                        modifier = Modifier.height(1.dp)
-                    )
+                                Spacer(
+                                    modifier = Modifier.height(1.dp)
+                                )
 
 
-                    Row {
+                                Row {
 
-                        Button(onClick = {
-                            navController.navigate(ROUTE_CONTACT) {
-                                popUpTo(ROUTE_APART) { inclusive = true }
+                                    Button(onClick = {
+                                        navController.navigate(ROUTE_CONTACT) {
+                                            popUpTo(ROUTE_APART) { inclusive = true }
+                                        }
+                                    },
+
+
+                                        modifier = Modifier
+
+                                            .fillMaxSize()
+                                            .background(color = Color.DarkGray)
+
+                                    )
+                                    {
+
+                                        Text(text = "Talk to us")
+                                    }
+
+                                }
+
+
+
+
+
                             }
-                        },
+
+                            Spacer(modifier = Modifier.height(5.dp))
 
 
-                            modifier = Modifier
+                            Card(
+                                elevation = CardDefaults.cardElevation(10.dp),
+                                modifier = Modifier
+                                    .background(color = Color.DarkGray)
+                            ) {
 
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-
-                        )
-                        {
-
-                            Text(text = "Talk to us")
-                        }
-
-                    }
-
-
-
-
-
-                }
-
-                Spacer(modifier = Modifier.height(5.dp))
-
-
-                Card(
-                    elevation = CardDefaults.cardElevation(10.dp),
-                    modifier = Modifier
-                        .background(color = Color.DarkGray)
-                ) {
-
-                    Image(
-                        painter = painterResource(id = R.drawable.beverly6),
-                        contentDescription = "null"
+                                Image(
+                                    painter = painterResource(id = R.drawable.beverly6),
+                                    contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -291,56 +303,56 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                    )
+                                )
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "RIVERSIDE", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "RIVERSIDE", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "Square", color = Color.White)
-                    }
+                                    Text(text = "Square", color = Color.White)
+                                }
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "KSH 105,000.00", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "KSH 105,000.00", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                    Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                    }
-
-
+                                }
 
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(10.dp)
-                    ) {
-                        Button(onClick = {}) {
+
+
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(10.dp)
+                                ) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "3 Beds")
-                        }
+                                        Text(text = "3 Beds")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -348,67 +360,67 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "3 Baths")
-                        }
+                                        Text(text = "3 Baths")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "2 Cams")
-                        }
-                    }
+                                        Text(text = "2 Cams")
+                                    }
+                                }
 
-                    Spacer(
-                        modifier = Modifier.height(1.dp)
-                    )
+                                Spacer(
+                                    modifier = Modifier.height(1.dp)
+                                )
 
 
-                    Row {
+                                Row {
 
-                        Button(onClick = {
-                            navController.navigate(ROUTE_CONTACT) {
-                                popUpTo(ROUTE_APART) { inclusive = true }
+                                    Button(onClick = {
+                                        navController.navigate(ROUTE_CONTACT) {
+                                            popUpTo(ROUTE_APART) { inclusive = true }
+                                        }
+                                    },
+
+
+                                        modifier = Modifier
+
+                                            .fillMaxSize()
+                                            .background(color = Color.DarkGray)
+
+                                    )
+                                    {
+
+                                        Text(text = "Talk to us")
+                                    }
+
+                                }
+
+
+
+
+
                             }
-                        },
 
-
-                            modifier = Modifier
-
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-
-                        )
-                        {
-
-                            Text(text = "Talk to us")
-                        }
-
-                    }
+                            Spacer(modifier = Modifier.height(5.dp))
 
 
 
+                            Card(
+                                elevation = CardDefaults.cardElevation(10.dp),
+                                modifier = Modifier
+                                    .background(color = Color.DarkGray)
+                            ) {
 
-
-                }
-
-                Spacer(modifier = Modifier.height(5.dp))
-
-
-
-                Card(
-                    elevation = CardDefaults.cardElevation(10.dp),
-                    modifier = Modifier
-                        .background(color = Color.DarkGray)
-                ) {
-
-                    Image(
-                        painter = painterResource(id = R.drawable.beverly4),
-                        contentDescription = "null"
+                                Image(
+                                    painter = painterResource(id = R.drawable.beverly4),
+                                    contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -416,56 +428,56 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                    )
+                                )
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "MATUNDU", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "MATUNDU", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "Westie", color = Color.White)
-                    }
+                                    Text(text = "Westie", color = Color.White)
+                                }
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(5.dp)
-                    ) {
-                        Text(text = "KSH 160,000.00", color = Color.White)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(5.dp)
+                                ) {
+                                    Text(text = "KSH 160,000.00", color = Color.White)
 
-                        Spacer(modifier = Modifier.width(250.dp))
+                                    Spacer(modifier = Modifier.width(250.dp))
 
-                        Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                    Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                    }
-
-
+                                }
 
 
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(color = Color.DarkGray)
-                            .padding(10.dp)
-                    ) {
-                        Button(onClick = {}) {
+
+
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(color = Color.DarkGray)
+                                        .padding(10.dp)
+                                ) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "3 Beds")
-                        }
+                                        Text(text = "3 Beds")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -473,55 +485,55 @@ fun ApartScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "3 Baths")
-                        }
+                                        Text(text = "3 Baths")
+                                    }
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
 
-                        Button(onClick = {}) {
+                                    Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                            Text(text = "2 Cams")
-                        }
-                    }
+                                        Text(text = "2 Cams")
+                                    }
+                                }
 
-                    Spacer(
-                        modifier = Modifier.height(1.dp)
-                    )
+                                Spacer(
+                                    modifier = Modifier.height(1.dp)
+                                )
 
 
-                    Row {
+                                Row {
 
-                        Button(onClick = {
-                            navController.navigate(ROUTE_CONTACT) {
-                                popUpTo(ROUTE_APART) { inclusive = true }
+                                    Button(onClick = {
+                                        navController.navigate(ROUTE_CONTACT) {
+                                            popUpTo(ROUTE_APART) { inclusive = true }
+                                        }
+                                    },
+
+
+                                        modifier = Modifier
+
+                                            .fillMaxSize()
+                                            .background(color = Color.DarkGray)
+
+                                    )
+                                    {
+
+                                        Text(text = "Talk to us")
+                                    }
+
+                                }
+
+
+
+
+
                             }
-                        },
 
-
-                            modifier = Modifier
-
-                                .fillMaxSize()
-                                .background(color = Color.DarkGray)
-
-                        )
-                        {
-
-                            Text(text = "Talk to us")
-                        }
-
-                    }
-
-
-
-
-
-                }
-
-                Spacer(modifier = Modifier.height(5.dp))
+                            Spacer(modifier = Modifier.height(5.dp))
 
 
 
@@ -636,14 +648,48 @@ fun ApartScreen(navController: NavHostController) {
 //            Text(text = "Add Students")
 //
 //        }
+                        }
+                    }
+
+
+                }
             }
-        }
+        },
+
+        bottomBar = {BottomBar(navController)}
+    )
 
 
-        }
+}
+
+
+@Composable
+fun BottomBar(navController: NavHostController) {
+    val selectedIndex = remember { mutableStateOf(0) }
+    BottomNavigation(elevation = 10.dp,
+        backgroundColor = Color.LightGray) {
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Home,"")
+        },
+            label = { Text(text = "Home") }, selected = (selectedIndex.value == 0), onClick = {
+                navController.navigate(ROUTE_HOMES) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Favorite,"")
+        },
+            label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
+                navController.navigate(ROUTE_APART) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Person, "")
+        },
+            label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
+                navController.navigate(ROUTE_LOGIN) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
     }
-
-
 }
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable

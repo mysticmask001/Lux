@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Email
@@ -46,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
+import net.ezra.navigation.ROUTE_ADD_STUDENTS
 import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_CONTACT
 import net.ezra.navigation.ROUTE_HOMES
@@ -54,44 +56,46 @@ import net.ezra.navigation.ROUTE_HOMES
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactScreen(navController: NavHostController) {
-    openEmailer()
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+LazyColumn {
+    item {
 
-
-        Image(
-            painter = painterResource(
-                id = R.drawable.smoke
-            ),
-            contentDescription = "null",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
-
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(10.dp),
-
-            verticalArrangement = Arrangement.Center,
-
-            horizontalAlignment = Alignment.CenterHorizontally
-
-
         ) {
 
-            Text(
-                text = "NEED A HOME?",
-                color = Color.White,
-                fontSize = 40.sp,
 
-                modifier = Modifier
-                    .padding(20.dp)
-                    .padding(10.dp)
-
+            Image(
+                painter = painterResource(
+                    id = R.drawable.smoke
+                ),
+                contentDescription = "null",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp),
+
+                verticalArrangement = Arrangement.Center,
+
+                horizontalAlignment = Alignment.CenterHorizontally
+
+
+            ) {
+
+                Text(
+                    text = "NEED A HOME?",
+                    color = Color.White,
+                    fontSize = 40.sp,
+
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .padding(10.dp)
+
+                )
 
 
 //            Text(text = "NEED A HOME?",
@@ -102,122 +106,134 @@ fun ContactScreen(navController: NavHostController) {
 //                    .size(150.dp)
 //            )
 
-            Spacer(modifier = Modifier.height(30.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
 
-            var name by remember { mutableStateOf("") }
+//                var name by remember { mutableStateOf("") }
+//
+////        TextField(value = name, onValueChange = {name = it})
+//
+//
+//                TextField(
+//                    value = name,
+//                    onValueChange = { name = it },
+//                    label = { Text(text = "Enter Name") },
+//                    leadingIcon = {
+//                        Icon(imageVector = Icons.Default.Person, contentDescription = "null")
+//                    },
+//                    colors = TextFieldDefaults.outlinedTextFieldColors(
+//                        focusedBorderColor = Color.Green,
+//                        unfocusedBorderColor = Color.Black,
+//                        focusedLabelColor = Color.Green,
+//                        unfocusedLabelColor = Color.White,
+//                        focusedLeadingIconColor = Color.Green,
+//                        unfocusedLeadingIconColor = Color.Black
+//                    ),
+//
+//                    textStyle = TextStyle(Color.White)
+//                )
+//
+//                Spacer(modifier = Modifier.height(20.dp))
+//
+//                var email by remember { mutableStateOf("") }
+//
+////        TextField(value = name, onValueChange = {name = it})
+//
+//
+//                TextField(
+//                    value = email,
+//                    onValueChange = { email = it },
+//                    label = { Text(text = "Enter Email") },
+//                    leadingIcon = {
+//                        Icon(imageVector = Icons.Default.Email, contentDescription = "null")
+//                    },
+//                    colors = TextFieldDefaults.outlinedTextFieldColors(
+//                        focusedBorderColor = Color.Green,
+//                        unfocusedBorderColor = Color.Black,
+//                        focusedLabelColor = Color.Green,
+//                        unfocusedLabelColor = Color.White,
+//                        focusedLeadingIconColor = Color.Green,
+//                        unfocusedLeadingIconColor = Color.Black
+//                    ),
+//
+//                    textStyle = TextStyle(Color.White)
+//                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+
+                var mess by remember { mutableStateOf("") }
 
 //        TextField(value = name, onValueChange = {name = it})
 
 
-            TextField(
-                value = name,
-                onValueChange = { name = it },
-                label = { Text(text = "Enter Name") },
-                leadingIcon = {
-                    Icon(imageVector = Icons.Default.Person, contentDescription = "null")
-                },
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Green,
-                    unfocusedBorderColor = Color.Black,
-                    focusedLabelColor = Color.Green,
-                    unfocusedLabelColor = Color.White,
-                    focusedLeadingIconColor = Color.Green,
-                    unfocusedLeadingIconColor = Color.Black
-                ),
+                TextField(
+                    value = mess,
+                    onValueChange = { mess = it },
+                    label = { Text(text = "I am interested....") },
+                    leadingIcon = {
+                        Icon(imageVector = Icons.Default.CheckCircle, contentDescription = "null")
+                    },
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = Color.Green,
+                        unfocusedBorderColor = Color.Black,
+                        focusedLabelColor = Color.Green,
+                        unfocusedLabelColor = Color.White,
+                        focusedLeadingIconColor = Color.Green,
+                        unfocusedLeadingIconColor = Color.Black
+                    ),
 
-                textStyle = TextStyle(Color.White)
-            )
+                    textStyle = TextStyle(Color.White)
+                )
 
-            Spacer(modifier = Modifier.height(20.dp))
-
-            var email by remember { mutableStateOf("") }
-
-//        TextField(value = name, onValueChange = {name = it})
+                Spacer(modifier = Modifier.height(20.dp))
 
 
-            TextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text(text = "Enter Email") },
-                leadingIcon = {
-                    Icon(imageVector = Icons.Default.Email, contentDescription = "null")
-                },
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Green,
-                    unfocusedBorderColor = Color.Black,
-                    focusedLabelColor = Color.Green,
-                    unfocusedLabelColor = Color.White,
-                    focusedLeadingIconColor = Color.Green,
-                    unfocusedLeadingIconColor = Color.Black
-                ),
+                Row {
+                    Button(
+                        onClick = {
+                            navController.navigate(ROUTE_ADD_STUDENTS) {
+                                popUpTo(ROUTE_CONTACT) { inclusive = true }
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(text = "Make Offer")
+                    }
 
-                textStyle = TextStyle(Color.White)
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-
-            var mess by remember { mutableStateOf("") }
-
-//        TextField(value = name, onValueChange = {name = it})
-
-
-            TextField(
-                value = mess,
-                onValueChange = { mess = it },
-                label = { Text(text = "I am interested....") },
-                leadingIcon = {
-                    Icon(imageVector = Icons.Default.CheckCircle, contentDescription = "null")
-                },
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Green,
-                    unfocusedBorderColor = Color.Black,
-                    focusedLabelColor = Color.Green,
-                    unfocusedLabelColor = Color.White,
-                    focusedLeadingIconColor = Color.Green,
-                    unfocusedLeadingIconColor = Color.Black
-                ),
-
-                textStyle = TextStyle(Color.White)
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-
-            Row {
-                Button(
-                    onClick = {},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Text(text = "Make Offer")
                 }
 
-            }
+                Spacer(modifier = Modifier.height(2.dp))
 
-            Spacer(modifier = Modifier.height(2.dp))
-
-            Button(onClick = {
-                navController.navigate(ROUTE_HOMES) {
-                    popUpTo(ROUTE_CONTACT) { inclusive = true }
+                Button(onClick = {
+                    navController.navigate(ROUTE_HOMES) {
+                        popUpTo(ROUTE_CONTACT) { inclusive = true }
+                    }
                 }
+
+                )
+                {
+
+                    Text(text = "Back")
+                }
+
+
+
+
             }
 
-            )
-            {
 
-                Text(text = "Back")
-            }
 
         }
-
-
     }
+}
 
 
 
 }
+
+
 
 
 @Composable
@@ -234,10 +250,11 @@ fun openEmailer() {
     val emailBody = remember {
         mutableStateOf(TextFieldValue())
     }
+    val ctx = LocalContext.current
 
     // on below line we are creating
     // a variable for a context
-    val ctx = LocalContext.current
+
 
     // on below line we are creating a column
     Column(
@@ -257,101 +274,101 @@ fun openEmailer() {
         verticalArrangement = Arrangement.Center
     ) {
 
-        // on the below line, we are
-        // creating a text field.
-        TextField(
-            // on below line we are specifying
-            // value for our  text field.
-            value = senderEmail.value,
-
-            // on below line we are adding on value
-            // change for text field.
-            onValueChange = { senderEmail.value = it },
-
-            // on below line we are adding place holder as text
-            placeholder = { Text(text = "Enter sender email address") },
-
-            // on below line we are adding modifier to it
-            // and adding padding to it and filling max width
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-
-            // on below line we are adding text style
-            // specifying color and font size to it.
-            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
-
-            // on below line we are
-            // adding single line to it.
-            singleLine = true,
-        )
-        // on below line adding a spacer.
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // on the below line, we are creating a text field.
-        TextField(
-            // on below line we are specifying
-            // value for our  text field.
-            value = emailSubject.value,
-
-            // on below line we are adding on value change
-            // for text field.
-            onValueChange = { emailSubject.value = it },
-
-            // on below line we are adding place holder as text
-            placeholder = { Text(text = "Enter email subject") },
-
-            // on below line we are adding modifier to it
-            // and adding padding to it and filling max width
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-
-            // on below line we are adding text style
-            // specifying color and font size to it.
-            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
-
-            // on below line we are
-            // adding single line to it.
-            singleLine = true,
-        )
-
-        // on below line adding a spacer.
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // on the below line, we are creating a text field.
-        TextField(
-            // on below line we are specifying
-            // value for our  text field.
-            value = emailBody.value,
-
-            // on below line we are adding on value
-            // change for text field.
-            onValueChange = { emailBody.value = it },
-
-            // on below line we are adding place holder as text
-            placeholder = { Text(text = "Enter email body") },
-
-            // on below line we are adding modifier to it
-            // and adding padding to it and filling max width
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-
-            // on below line we are adding text style
-            // specifying color and font size to it.
-            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
-
-            // on below line we are
-            // adding single line to it.
-            singleLine = true,
-        )
-
-        // on below line adding a spacer.
-        Spacer(modifier = Modifier.height(20.dp))
-
-        // on below line adding a
-        // button to send an email
+//        // on the below line, we are
+//        // creating a text field.
+//        TextField(
+//            // on below line we are specifying
+//            // value for our  text field.
+//            value = senderEmail.value,
+//
+//            // on below line we are adding on value
+//            // change for text field.
+//            onValueChange = { senderEmail.value = it },
+//
+//            // on below line we are adding place holder as text
+//            placeholder = { Text(text = "Enter sender email address") },
+//
+//            // on below line we are adding modifier to it
+//            // and adding padding to it and filling max width
+//            modifier = Modifier
+//                .padding(16.dp)
+//                .fillMaxWidth(),
+//
+//            // on below line we are adding text style
+//            // specifying color and font size to it.
+//            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
+//
+//            // on below line we are
+//            // adding single line to it.
+//            singleLine = true,
+//        )
+//        // on below line adding a spacer.
+//        Spacer(modifier = Modifier.height(10.dp))
+//
+//        // on the below line, we are creating a text field.
+//        TextField(
+//            // on below line we are specifying
+//            // value for our  text field.
+//            value = emailSubject.value,
+//
+//            // on below line we are adding on value change
+//            // for text field.
+//            onValueChange = { emailSubject.value = it },
+//
+//            // on below line we are adding place holder as text
+//            placeholder = { Text(text = "Enter email subject") },
+//
+//            // on below line we are adding modifier to it
+//            // and adding padding to it and filling max width
+//            modifier = Modifier
+//                .padding(16.dp)
+//                .fillMaxWidth(),
+//
+//            // on below line we are adding text style
+//            // specifying color and font size to it.
+//            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
+//
+//            // on below line we are
+//            // adding single line to it.
+//            singleLine = true,
+//        )
+//
+//        // on below line adding a spacer.
+//        Spacer(modifier = Modifier.height(10.dp))
+//
+//        // on the below line, we are creating a text field.
+//        TextField(
+//            // on below line we are specifying
+//            // value for our  text field.
+//            value = emailBody.value,
+//
+//            // on below line we are adding on value
+//            // change for text field.
+//            onValueChange = { emailBody.value = it },
+//
+//            // on below line we are adding place holder as text
+//            placeholder = { Text(text = "Enter email body") },
+//
+//            // on below line we are adding modifier to it
+//            // and adding padding to it and filling max width
+//            modifier = Modifier
+//                .padding(16.dp)
+//                .fillMaxWidth(),
+//
+//            // on below line we are adding text style
+//            // specifying color and font size to it.
+//            textStyle = TextStyle(color = Color.Black, fontSize = 15.sp),
+//
+//            // on below line we are
+//            // adding single line to it.
+//            singleLine = true,
+//        )
+//
+//        // on below line adding a spacer.
+//        Spacer(modifier = Modifier.height(20.dp))
+//
+//        // on below line adding a
+//        // button to send an email
         Button(onClick = {
 
             // on below line we are creating
@@ -377,8 +394,10 @@ fun openEmailer() {
             Text(
                 // on below line adding a text ,
                 // padding, color and font size.
-                text = "Send Email",
-                modifier = Modifier.padding(10.dp),
+                text = "Make Offer",
+                modifier = Modifier
+                    .padding(10.dp),
+
                 color = Color.White,
                 fontSize = 15.sp
             )

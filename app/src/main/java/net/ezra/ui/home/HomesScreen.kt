@@ -79,33 +79,7 @@ fun HomesScreen(navController: NavHostController) {
 
 
     Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                title = {
-//                    Row() {
-//                        Text(
-//                            text = "",
-//                            fontSize = 30.sp,
-//                            color = Color.Red
-//                        )
-//                        Text(
-//                            text = " LUX",
-//                            fontSize = 30.sp,
-//                            color = Color.White
-//                        )
-//
-//                    }
-//                },
-////                navigationIcon = {
-////                    IconButton(onClick = {}) {
-////                        Icon(Icons.Filled.ArrowBack, "backIcon")
-////                    }
-////                },
-//                backgroundColor = Color.Black,
-//                contentColor = Color.White,
-//                elevation = 10.dp
-//            )
-//        },
+
 content = {
             LazyColumn {
                 item {
@@ -246,7 +220,7 @@ content = {
                             ) {
 
                                 Image(
-                                    painter = painterResource(id = R.drawable.cont1),
+                                    painter = painterResource(id = R.drawable.beverly3),
                                     contentDescription = "null",
                                     modifier = Modifier
                                         .fillMaxSize()
@@ -769,7 +743,7 @@ fun BottomBar(navController: NavHostController) {
             Icon(imageVector = Icons.Default.Favorite,"")
         },
             label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
-                navController.navigate(ROUTE_APART) {
+                navController.navigate(ROUTE_ADD_STUDENTS) {
                     popUpTo(ROUTE_HOMES) { inclusive = true }
                 }})
         BottomNavigationItem(icon = {

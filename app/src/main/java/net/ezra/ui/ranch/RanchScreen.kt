@@ -1,22 +1,29 @@
 package net.ezra.ui.ranch
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -31,133 +38,137 @@ import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_BUNGALOW
 import net.ezra.navigation.ROUTE_CONTACT
 import net.ezra.navigation.ROUTE_HOMES
+import net.ezra.navigation.ROUTE_LOGIN
 import net.ezra.navigation.ROUTE_RANCH
 import net.ezra.navigation.ROUTE_VILLA
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun RanchScreen(navController: NavHostController) {
 
-   LazyColumn {
-       item {
-           Box(
-               modifier = Modifier
-                   .fillMaxSize()
-           ) {
+  Scaffold (
+      content = {
+          LazyColumn {
+              item {
+                  Box(
+                      modifier = Modifier
+                          .fillMaxSize()
+                  ) {
 
 
-               Image(
-                   painter = painterResource(
-                       id = R.drawable.bg
-                   ),
-                   contentDescription = "null",
-                   contentScale = ContentScale.Crop,
-                   modifier = Modifier.fillMaxSize()
-               )
-           Column(
-               modifier = Modifier
-                   .fillMaxWidth()
-                   .wrapContentHeight()
+                      Image(
+                          painter = painterResource(
+                              id = R.drawable.bg
+                          ),
+                          contentDescription = "null",
+                          contentScale = ContentScale.Crop,
+                          modifier = Modifier.fillMaxSize()
+                      )
+                      Column(
+                          modifier = Modifier
+                              .fillMaxWidth()
+                              .wrapContentHeight()
 //
-                   .fillMaxSize()
+                              .fillMaxSize()
 
 
-           ) {
+                      ) {
 
-               Row {
-                   Icon(imageVector = Icons.Default.Home, contentDescription = "")
+                          Row {
+                              Icon(imageVector = Icons.Default.Home, contentDescription = "")
 
-                   Spacer(modifier = Modifier.width(150.dp))
+                              Spacer(modifier = Modifier.width(150.dp))
 
-                   Text(
-                       text = "RANCH",
-                       modifier = Modifier
-                           .fillMaxSize()
-                   )
+                              Text(
+                                  text = "RANCH",
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                              )
 
-                   Spacer(modifier = Modifier.width(150.dp))
+                              Spacer(modifier = Modifier.width(150.dp))
 
-                   Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "")
-               }
+                              Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "")
+                          }
 
-               LazyRow {
-                   item {
+                          LazyRow {
+                              item {
 
-                           Text(
-                               modifier = Modifier
-                                   .clickable {
-                                       navController.navigate(ROUTE_HOMES) {
-                                           popUpTo(ROUTE_RANCH) { inclusive = true }
-                                       }
-                                   },
-                               text = "Houses(100)"
-                           )
-
-
-
-                           Spacer(modifier = Modifier.width(30.dp))
-
-                           Text(
-                               modifier = Modifier
-                                   .clickable {
-                                       navController.navigate(ROUTE_APART) {
-                                           popUpTo(ROUTE_RANCH) { inclusive = true }
-                                       }
-                                   },
-                               text = "Apartments(404)"
-                           )
-
-
-                           Spacer(modifier = Modifier.width(30.dp))
-
-                           Text(
-                               modifier = Modifier
-                                   .clickable {
-                                       navController.navigate(ROUTE_VILLA) {
-                                           popUpTo(ROUTE_RANCH) { inclusive = true }
-                                       }
-                                   },
-                               text = "Villa(305)"
-                           )
-
-                           Spacer(modifier = Modifier.width(30.dp))
-
-                           Text(
-                               modifier = Modifier
-                                   .clickable {
-                                       navController.navigate(ROUTE_BUNGALOW) {
-                                           popUpTo(ROUTE_RANCH) { inclusive = true }
-                                       }
-                                   },
-                               text = "Bungalows(200)"
-                           )
+                                  Text(
+                                      modifier = Modifier
+                                          .clickable {
+                                              navController.navigate(ROUTE_HOMES) {
+                                                  popUpTo(ROUTE_RANCH) { inclusive = true }
+                                              }
+                                          },
+                                      text = "Houses(100)"
+                                  )
 
 
 
-                           Spacer(modifier = Modifier.width(30.dp))
+                                  Spacer(modifier = Modifier.width(30.dp))
 
-                           Text(
-                               modifier = Modifier
-                                   .clickable {
-                                       navController.navigate(ROUTE_RANCH) {
-                                           popUpTo(ROUTE_RANCH) { inclusive = true }
-                                       }
-                                   },
-                               text = "Ranch-Style(60)"
-                           )
-
-                   }
-               }
+                                  Text(
+                                      modifier = Modifier
+                                          .clickable {
+                                              navController.navigate(ROUTE_APART) {
+                                                  popUpTo(ROUTE_RANCH) { inclusive = true }
+                                              }
+                                          },
+                                      text = "Apartments(404)"
+                                  )
 
 
-               Card(
-                   elevation = CardDefaults.cardElevation(10.dp),
-                   modifier = Modifier
-                       .background(color = Color.DarkGray)
-               ) {
+                                  Spacer(modifier = Modifier.width(30.dp))
 
-                   Image(
-                       painter = painterResource(id = R.drawable.ranch2),
-                       contentDescription = "null"
+                                  Text(
+                                      modifier = Modifier
+                                          .clickable {
+                                              navController.navigate(ROUTE_VILLA) {
+                                                  popUpTo(ROUTE_RANCH) { inclusive = true }
+                                              }
+                                          },
+                                      text = "Villa(305)"
+                                  )
+
+                                  Spacer(modifier = Modifier.width(30.dp))
+
+                                  Text(
+                                      modifier = Modifier
+                                          .clickable {
+                                              navController.navigate(ROUTE_BUNGALOW) {
+                                                  popUpTo(ROUTE_RANCH) { inclusive = true }
+                                              }
+                                          },
+                                      text = "Bungalows(200)"
+                                  )
+
+
+
+                                  Spacer(modifier = Modifier.width(30.dp))
+
+                                  Text(
+                                      modifier = Modifier
+                                          .clickable {
+                                              navController.navigate(ROUTE_RANCH) {
+                                                  popUpTo(ROUTE_RANCH) { inclusive = true }
+                                              }
+                                          },
+                                      text = "Ranch-Style(60)"
+                                  )
+
+                              }
+                          }
+
+
+                          Card(
+                              elevation = CardDefaults.cardElevation(10.dp),
+                              modifier = Modifier
+                                  .background(color = Color.DarkGray)
+                          ) {
+
+                              Image(
+                                  painter = painterResource(id = R.drawable.ranch2),
+                                  contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -165,56 +176,56 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                   )
+                              )
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "WaterMark", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "WaterMark", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "KAREN", color = Color.White)
-                   }
+                                  Text(text = "KAREN", color = Color.White)
+                              }
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "KSH 100.00 PSF", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "KSH 100.00 PSF", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                  Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                   }
-
-
+                              }
 
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(10.dp)
-                   ) {
-                       Button(onClick = {}) {
+
+
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(10.dp)
+                              ) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Beds")
-                       }
+                                      Text(text = "3 Beds")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -222,65 +233,65 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Baths")
-                       }
+                                      Text(text = "3 Baths")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "2 Cams")
-                       }
-                   }
+                                      Text(text = "2 Cams")
+                                  }
+                              }
 
-                   Spacer(
-                       modifier = Modifier.height(1.dp)
-                   )
-
-
-                   Row {
-
-                       Button(onClick = {
-                           navController.navigate(ROUTE_CONTACT) {
-                               popUpTo(ROUTE_RANCH) { inclusive = true }
-                           }
-                       },
+                              Spacer(
+                                  modifier = Modifier.height(1.dp)
+                              )
 
 
-                           modifier = Modifier
+                              Row {
 
-                               .fillMaxSize()
-                               .background(color = Color.DarkGray)
-
-                       )
-                       {
-
-                           Text(text = "Talk to us")
-                       }
-
-                   }
+                                  Button(onClick = {
+                                      navController.navigate(ROUTE_CONTACT) {
+                                          popUpTo(ROUTE_RANCH) { inclusive = true }
+                                      }
+                                  },
 
 
+                                      modifier = Modifier
+
+                                          .fillMaxSize()
+                                          .background(color = Color.DarkGray)
+
+                                  )
+                                  {
+
+                                      Text(text = "Talk to us")
+                                  }
+
+                              }
 
 
 
-               }
 
-               Spacer(modifier = Modifier.height(5.dp))
 
-               Card(
-                   elevation = CardDefaults.cardElevation(10.dp),
-                   modifier = Modifier
-                       .background(color = Color.DarkGray)
-               ) {
+                          }
 
-                   Image(
-                       painter = painterResource(id = R.drawable.ranch2),
-                       contentDescription = "null"
+                          Spacer(modifier = Modifier.height(5.dp))
+
+                          Card(
+                              elevation = CardDefaults.cardElevation(10.dp),
+                              modifier = Modifier
+                                  .background(color = Color.DarkGray)
+                          ) {
+
+                              Image(
+                                  painter = painterResource(id = R.drawable.ranch2),
+                                  contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -288,56 +299,56 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                   )
+                              )
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "WaterMark", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "WaterMark", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "KAREN", color = Color.White)
-                   }
+                                  Text(text = "KAREN", color = Color.White)
+                              }
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "KSH 100.00 PSF", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "KSH 100.00 PSF", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                  Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                   }
-
-
+                              }
 
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(10.dp)
-                   ) {
-                       Button(onClick = {}) {
+
+
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(10.dp)
+                              ) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Beds")
-                       }
+                                      Text(text = "3 Beds")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -345,65 +356,65 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Baths")
-                       }
+                                      Text(text = "3 Baths")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "2 Cams")
-                       }
-                   }
+                                      Text(text = "2 Cams")
+                                  }
+                              }
 
-                   Spacer(
-                       modifier = Modifier.height(1.dp)
-                   )
-
-
-                   Row {
-
-                       Button(onClick = {
-                           navController.navigate(ROUTE_CONTACT) {
-                               popUpTo(ROUTE_RANCH) { inclusive = true }
-                           }
-                       },
+                              Spacer(
+                                  modifier = Modifier.height(1.dp)
+                              )
 
 
-                           modifier = Modifier
+                              Row {
 
-                               .fillMaxSize()
-                               .background(color = Color.DarkGray)
-
-                       )
-                       {
-
-                           Text(text = "Talk to us")
-                       }
-
-                   }
+                                  Button(onClick = {
+                                      navController.navigate(ROUTE_CONTACT) {
+                                          popUpTo(ROUTE_RANCH) { inclusive = true }
+                                      }
+                                  },
 
 
+                                      modifier = Modifier
+
+                                          .fillMaxSize()
+                                          .background(color = Color.DarkGray)
+
+                                  )
+                                  {
+
+                                      Text(text = "Talk to us")
+                                  }
+
+                              }
 
 
 
-               }
 
-               Spacer(modifier = Modifier.height(5.dp))
 
-               Card(
-                   elevation = CardDefaults.cardElevation(10.dp),
-                   modifier = Modifier
-                       .background(color = Color.DarkGray)
-               ) {
+                          }
 
-                   Image(
-                       painter = painterResource(id = R.drawable.ranch2),
-                       contentDescription = "null"
+                          Spacer(modifier = Modifier.height(5.dp))
+
+                          Card(
+                              elevation = CardDefaults.cardElevation(10.dp),
+                              modifier = Modifier
+                                  .background(color = Color.DarkGray)
+                          ) {
+
+                              Image(
+                                  painter = painterResource(id = R.drawable.ranch2),
+                                  contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -411,56 +422,56 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                   )
+                              )
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "WaterMark", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "WaterMark", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "KAREN", color = Color.White)
-                   }
+                                  Text(text = "KAREN", color = Color.White)
+                              }
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "KSH 100.00 PSF", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "KSH 100.00 PSF", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                  Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                   }
-
-
+                              }
 
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(10.dp)
-                   ) {
-                       Button(onClick = {}) {
+
+
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(10.dp)
+                              ) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Beds")
-                       }
+                                      Text(text = "3 Beds")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -468,65 +479,65 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Baths")
-                       }
+                                      Text(text = "3 Baths")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "2 Cams")
-                       }
-                   }
+                                      Text(text = "2 Cams")
+                                  }
+                              }
 
-                   Spacer(
-                       modifier = Modifier.height(1.dp)
-                   )
-
-
-                   Row {
-
-                       Button(onClick = {
-                           navController.navigate(ROUTE_CONTACT) {
-                               popUpTo(ROUTE_RANCH) { inclusive = true }
-                           }
-                       },
+                              Spacer(
+                                  modifier = Modifier.height(1.dp)
+                              )
 
 
-                           modifier = Modifier
+                              Row {
 
-                               .fillMaxSize()
-                               .background(color = Color.DarkGray)
-
-                       )
-                       {
-
-                           Text(text = "Talk to us")
-                       }
-
-                   }
+                                  Button(onClick = {
+                                      navController.navigate(ROUTE_CONTACT) {
+                                          popUpTo(ROUTE_RANCH) { inclusive = true }
+                                      }
+                                  },
 
 
+                                      modifier = Modifier
+
+                                          .fillMaxSize()
+                                          .background(color = Color.DarkGray)
+
+                                  )
+                                  {
+
+                                      Text(text = "Talk to us")
+                                  }
+
+                              }
 
 
 
-               }
 
-               Spacer(modifier = Modifier.height(5.dp))
 
-               Card(
-                   elevation = CardDefaults.cardElevation(10.dp),
-                   modifier = Modifier
-                       .background(color = Color.DarkGray)
-               ) {
+                          }
 
-                   Image(
-                       painter = painterResource(id = R.drawable.ranch2),
-                       contentDescription = "null"
+                          Spacer(modifier = Modifier.height(5.dp))
+
+                          Card(
+                              elevation = CardDefaults.cardElevation(10.dp),
+                              modifier = Modifier
+                                  .background(color = Color.DarkGray)
+                          ) {
+
+                              Image(
+                                  painter = painterResource(id = R.drawable.ranch2),
+                                  contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -534,56 +545,56 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                   )
+                              )
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "WaterMark", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "WaterMark", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "KAREN", color = Color.White)
-                   }
+                                  Text(text = "KAREN", color = Color.White)
+                              }
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "KSH 100.00 PSF", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "KSH 100.00 PSF", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                  Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                   }
-
-
+                              }
 
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(10.dp)
-                   ) {
-                       Button(onClick = {}) {
+
+
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(10.dp)
+                              ) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Beds")
-                       }
+                                      Text(text = "3 Beds")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -591,65 +602,65 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Baths")
-                       }
+                                      Text(text = "3 Baths")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "2 Cams")
-                       }
-                   }
+                                      Text(text = "2 Cams")
+                                  }
+                              }
 
-                   Spacer(
-                       modifier = Modifier.height(1.dp)
-                   )
-
-
-                   Row {
-
-                       Button(onClick = {
-                           navController.navigate(ROUTE_CONTACT) {
-                               popUpTo(ROUTE_RANCH) { inclusive = true }
-                           }
-                       },
+                              Spacer(
+                                  modifier = Modifier.height(1.dp)
+                              )
 
 
-                           modifier = Modifier
+                              Row {
 
-                               .fillMaxSize()
-                               .background(color = Color.DarkGray)
-
-                       )
-                       {
-
-                           Text(text = "Talk to us")
-                       }
-
-                   }
+                                  Button(onClick = {
+                                      navController.navigate(ROUTE_CONTACT) {
+                                          popUpTo(ROUTE_RANCH) { inclusive = true }
+                                      }
+                                  },
 
 
+                                      modifier = Modifier
+
+                                          .fillMaxSize()
+                                          .background(color = Color.DarkGray)
+
+                                  )
+                                  {
+
+                                      Text(text = "Talk to us")
+                                  }
+
+                              }
 
 
 
-               }
 
-               Spacer(modifier = Modifier.height(5.dp))
 
-               Card(
-                   elevation = CardDefaults.cardElevation(10.dp),
-                   modifier = Modifier
-                       .background(color = Color.DarkGray)
-               ) {
+                          }
 
-                   Image(
-                       painter = painterResource(id = R.drawable.ranch2),
-                       contentDescription = "null"
+                          Spacer(modifier = Modifier.height(5.dp))
+
+                          Card(
+                              elevation = CardDefaults.cardElevation(10.dp),
+                              modifier = Modifier
+                                  .background(color = Color.DarkGray)
+                          ) {
+
+                              Image(
+                                  painter = painterResource(id = R.drawable.ranch2),
+                                  contentDescription = "null"
 //                            imageslider = findViewById(R.drawable.)
 //
 //
@@ -657,56 +668,56 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                            images(add new slide)
 
-                   )
+                              )
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "WaterMark", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "WaterMark", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "KAREN", color = Color.White)
-                   }
+                                  Text(text = "KAREN", color = Color.White)
+                              }
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(5.dp)
-                   ) {
-                       Text(text = "KSH 100.00 PSF", color = Color.White)
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(5.dp)
+                              ) {
+                                  Text(text = "KSH 100.00 PSF", color = Color.White)
 
-                       Spacer(modifier = Modifier.width(250.dp))
+                                  Spacer(modifier = Modifier.width(250.dp))
 
-                       Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
+                                  Text(text = "", color = Color.White, fontFamily = FontFamily.Monospace)
 
-                   }
-
-
+                              }
 
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxSize()
-                           .background(color = Color.DarkGray)
-                           .padding(10.dp)
-                   ) {
-                       Button(onClick = {}) {
+
+
+                              Row(
+                                  modifier = Modifier
+                                      .fillMaxSize()
+                                      .background(color = Color.DarkGray)
+                                      .padding(10.dp)
+                              ) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Home, contentDescription = "null")
 //                                Image(painter = painterResource(id = R.drawable.bed), contentDescription ="")
 
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Beds")
-                       }
+                                      Text(text = "3 Beds")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(
 //                                    imageVector = Icons.Default.Person,
 //                                    contentDescription = "null"
@@ -714,55 +725,55 @@ fun RanchScreen(navController: NavHostController) {
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "3 Baths")
-                       }
+                                      Text(text = "3 Baths")
+                                  }
 
-                       Spacer(modifier = Modifier.width(20.dp))
+                                  Spacer(modifier = Modifier.width(20.dp))
 
 
-                       Button(onClick = {}) {
+                                  Button(onClick = {}) {
 //                                Icon(imageVector = Icons.Default.Check, contentDescription = "null")
 //
 //                                Spacer(modifier = Modifier.width(2.dp))
 
-                           Text(text = "2 Cams")
-                       }
-                   }
+                                      Text(text = "2 Cams")
+                                  }
+                              }
 
-                   Spacer(
-                       modifier = Modifier.height(1.dp)
-                   )
-
-
-                   Row {
-
-                       Button(onClick = {
-                           navController.navigate(ROUTE_CONTACT) {
-                               popUpTo(ROUTE_RANCH) { inclusive = true }
-                           }
-                       },
+                              Spacer(
+                                  modifier = Modifier.height(1.dp)
+                              )
 
 
-                           modifier = Modifier
+                              Row {
 
-                               .fillMaxSize()
-                               .background(color = Color.DarkGray)
-
-                       )
-                       {
-
-                           Text(text = "Talk to us")
-                       }
-
-                   }
+                                  Button(onClick = {
+                                      navController.navigate(ROUTE_CONTACT) {
+                                          popUpTo(ROUTE_RANCH) { inclusive = true }
+                                      }
+                                  },
 
 
+                                      modifier = Modifier
+
+                                          .fillMaxSize()
+                                          .background(color = Color.DarkGray)
+
+                                  )
+                                  {
+
+                                      Text(text = "Talk to us")
+                                  }
+
+                              }
 
 
 
-               }
 
-               Spacer(modifier = Modifier.height(5.dp))
+
+                          }
+
+                          Spacer(modifier = Modifier.height(5.dp))
 
 
 
@@ -881,12 +892,48 @@ fun RanchScreen(navController: NavHostController) {
 //
 //        }
 
-           }
-       }
-       }
-   }
+                      }
+                  }
+              }
+          }
+      },
+      bottomBar = { BottomBar(navController)}
+  )
 
 
+
+
+}
+
+
+
+@Composable
+fun BottomBar(navController: NavHostController) {
+    val selectedIndex = remember { mutableStateOf(0) }
+    BottomNavigation(elevation = 10.dp,
+        backgroundColor = Color.LightGray) {
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Home,"")
+        },
+            label = { Text(text = "Home") }, selected = (selectedIndex.value == 0), onClick = {
+                navController.navigate(ROUTE_HOMES) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Favorite,"")
+        },
+            label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
+                navController.navigate(ROUTE_APART) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Person, "")
+        },
+            label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
+                navController.navigate(ROUTE_LOGIN) {
+                    popUpTo(ROUTE_HOMES) { inclusive = true }
+                }})
+    }
 }
 
 @Preview(showBackground = true)

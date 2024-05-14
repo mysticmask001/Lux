@@ -39,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -70,7 +71,7 @@ fun AddStudents(navController: NavHostController) {
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = stringResource(id = R.string.home))
+                    Text(text = "Personal info")
                 },
                 navigationIcon = {
                     IconButton(onClick = {
@@ -87,16 +88,30 @@ fun AddStudents(navController: NavHostController) {
                 },
 
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xff0FB06A),
+                    containerColor = Color.Black,
                     titleContentColor = Color.White,
 
                     )
             )
         }, content = {
-            Column(
+
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color(0xff9AEDC9)),
+            ) {
+
+
+                Image(
+                    painter = painterResource(
+                        id = R.drawable.spongebob
+                    ),
+                    contentDescription = "null",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
             ) {
                 LazyColumn {
@@ -270,7 +285,7 @@ fun AddStudents(navController: NavHostController) {
 
                             }) {
 
-                                Text(text = "View Data")
+                                Text(text = "Upload")
 
 
                             }
@@ -303,7 +318,8 @@ fun AddStudents(navController: NavHostController) {
                 }
             }
 
-        })
+        }}
+    )
 
 
 
