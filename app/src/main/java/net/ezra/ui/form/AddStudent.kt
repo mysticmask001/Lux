@@ -15,6 +15,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -49,6 +50,7 @@ import coil.compose.rememberAsyncImagePainter
 
 import coil.request.ImageRequest
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import net.ezra.R
@@ -241,45 +243,71 @@ fun AddStudents(navController: NavHostController) {
 
 
                             OutlinedButton(onClick = {
+//                                var error by remember { mutableStateOf<String?>(null) }
+//
+//                                var isLoading by remember { mutableStateOf(false) }
+//                                if (Email.isBlank() || Name.isBlank()  || location.isBlank()  || phone.isBlank()) {
+//                        error = "Please fill in all fields"
+//                    } else {
+//                        isLoading = true
+//                        FirebaseAuth.getInstance().signInWithEmailAndPassword(Email, Name)
+//                            .addOnCompleteListener { task ->
+//                                isLoading = false
+//                                if (task.isSuccessful) {
+//                                    navController.navigate(ROUTE_HOMES)
+//                                } else {
+//                                    error = task.exception?.message ?: "Login failed"
+//                                }
+//                            }
+//                    }
+//
+//                                error?.let {
+//                                    androidx.compose.material.Text(
+//                                        text = it,
+//                                        color = MaterialTheme.colors.error,
+//                                        modifier = Modifier.padding(top = 8.dp)
+//                                    )
+//                                }
+//
 
-                                if (photoUri != null) {
-
-                                    progressDialog = ProgressDialog(context)
-                                    progressDialog?.setMessage("Uploading data...")
-                                    progressDialog?.setCancelable(false)
-                                    progressDialog?.show()
-
-                                    photoUri?.let {
-
-                                        uploadImageToFirebaseStorage(
-                                            it,
-                                           Name,
-                                            Email,
-                                            location,
-                                            phone,
-                                            context.toString()
-                                        )
-
-
-                                       Name = ""
-
-                                        Email = ""
-                                        location = ""
-                                        phone = ""
-                                        photoUri = null
-
-                                    }
-                                }
-                                else if (Email == ""){
-                                    Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
-                                }
-                                else if(Name == ""){
-                                    Toast.makeText(context, "Please enter name", Toast.LENGTH_SHORT).show()
-                                }
-
-                                else {
-                                    Toast.makeText(context, "Please select an image", Toast.LENGTH_SHORT).show()
-                                }
+//                                if (photoUri != null) {
+//
+//                                    progressDialog = ProgressDialog(context)
+//                                    progressDialog?.setMessage("Uploading data...")
+//                                    progressDialog?.setCancelable(false)
+//                                    progressDialog?.show()
+//
+//                                    photoUri?.let {
+//
+//                                        uploadImageToFirebaseStorage(
+//                                            it,
+//                                           Name,
+//                                            Email,
+//                                            location,
+//                                            phone,
+//                                            context.toString()
+//                                        )
+//
+//
+//                                       Name = ""
+//
+//                                        Email = ""
+//                                        location = ""
+//                                        phone = ""
+//                                        photoUri = null
+//
+//                                    }
+//                                }
+//                                else if (Email == ""){
+//                                    Toast.makeText(context, "Please enter email", Toast.LENGTH_SHORT).show()
+//                                }
+//                                else if(Name == ""){
+//                                    Toast.makeText(context, "Please enter name", Toast.LENGTH_SHORT).show()
+//                                }
+//
+//                                else {
+//                                    Toast.makeText(context, "Please select an image", Toast.LENGTH_SHORT).show()
+//                                }
 
 
 
@@ -387,7 +415,8 @@ fun uploadImageToFirebaseStorage(
 
 
 fun saveToFirestore(
-    imageUrl: String,
+
+imageUrl: String,
     Name: String,
     Email: String,
     location: String,
@@ -399,6 +428,19 @@ fun saveToFirestore(
 
     ) {
 
+//    var firebaseConfig = {
+//        val apiKey = Unit
+//        apiKey: "YOUR_API_KEY",
+//        authDomain: "YOUR_AUTH_DOMAIN",
+//        projectId: "YOUR_PROJECT_ID",
+//        storageBucket: "YOUR_STORAGE_BUCKET",
+//        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+//        val appId = null
+//        appId: "YOUR_APP_ID"
+//    };
+//
+//    firebase.initializeApp(firebaseConfig);
+
 
     val db = Firebase.firestore
     val imageInfo = hashMapOf(
@@ -409,11 +451,10 @@ fun saveToFirestore(
         "phone" to phone
 
 
-
     )
 
 
-    db.collection("Students")
+    db.collection("Info")
         .add(imageInfo)
         .addOnSuccessListener { documentReference ->
 
@@ -426,8 +467,8 @@ fun saveToFirestore(
                 .setPositiveButton("OK") { _, _ ->
                     // Optional: Add actions when OK is clicked
                 }
-                .setIcon(R.drawable.logo)
-                .setCancelable(false)
+                .setIcon(R.drawable.splash)
+                .setCancelable(true)
 
             val alertDialog = dialogBuilder.create()
             alertDialog.show()
@@ -448,12 +489,12 @@ fun saveToFirestore(
                     // Optional: Add actions when OK is clicked
 
 
-
                 }
                 .show()
 
 
         }
+
 }
 
 

@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -202,7 +203,7 @@ content = {
                                     Text(
                                         modifier = Modifier
                                             .clickable {
-                                                navController.navigate(ROUTE_ADD_STUDENTS) {
+                                                navController.navigate(ROUTE_CONTACT) {
                                                     popUpTo(ROUTE_HOMES) { inclusive = true }
                                                 }
                                             },
@@ -739,20 +740,23 @@ fun BottomBar(navController: NavHostController) {
                 navController.navigate(ROUTE_HOMES) {
                     popUpTo(ROUTE_HOMES) { inclusive = true }
             }})
+
+
         BottomNavigationItem(icon = {
-            Icon(imageVector = Icons.Default.Favorite,"")
+            Icon(imageVector = Icons.Default.Phone,"")
         },
-            label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
-                navController.navigate(ROUTE_ADD_STUDENTS) {
+            label = { Text(text = "Contact") }, selected = (selectedIndex.value == 1), onClick = {
+                navController.navigate(ROUTE_CONTACT) {
                     popUpTo(ROUTE_HOMES) { inclusive = true }
                 }})
-        BottomNavigationItem(icon = {
-            Icon(imageVector = Icons.Default.Person, "")
-        },
-            label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
-                navController.navigate(ROUTE_LOGIN) {
-                    popUpTo(ROUTE_HOMES) { inclusive = true }
-                }})
+
+//        BottomNavigationItem(icon = {
+//            Icon(imageVector = Icons.Default.Person, "")
+//        },
+//            label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
+//                navController.navigate(ROUTE_LOGIN) {
+//                    popUpTo(ROUTE_HOMES) { inclusive = true }
+//                }})
     }
 }
 

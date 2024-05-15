@@ -1,6 +1,7 @@
 package net.ezra.ui.contact
 
 import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -44,6 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
@@ -53,9 +55,12 @@ import net.ezra.navigation.ROUTE_CONTACT
 import net.ezra.navigation.ROUTE_HOMES
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactScreen(navController: NavHostController) {
+
+    val context = LocalContext.current
 LazyColumn {
     item {
 
@@ -192,13 +197,15 @@ LazyColumn {
                 Row {
                     Button(
                         onClick = {
-                            navController.navigate(ROUTE_ADD_STUDENTS) {
-                                popUpTo(ROUTE_CONTACT) { inclusive = true }
-                            }
+                            val url = "https://www.zillow.com"
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.data = Uri.parse(url)
+                            context.startActivity(intent)
+
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                    ) {
+                    ){
                         Text(text = "Make Offer")
                     }
 

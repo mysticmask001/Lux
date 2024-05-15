@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
+import net.ezra.navigation.ROUTE_ADD_STUDENTS
 import net.ezra.navigation.ROUTE_APART
 import net.ezra.navigation.ROUTE_BUNGALOW
 import net.ezra.navigation.ROUTE_CONTACT
@@ -919,18 +921,12 @@ fun BottomBar(navController: NavHostController) {
                 navController.navigate(ROUTE_HOMES) {
                     popUpTo(ROUTE_HOMES) { inclusive = true }
                 }})
+
         BottomNavigationItem(icon = {
-            Icon(imageVector = Icons.Default.Favorite,"")
+            Icon(imageVector = Icons.Default.Phone,"")
         },
-            label = { Text(text = "Favorite") }, selected = (selectedIndex.value == 1), onClick = {
-                navController.navigate(ROUTE_APART) {
-                    popUpTo(ROUTE_HOMES) { inclusive = true }
-                }})
-        BottomNavigationItem(icon = {
-            Icon(imageVector = Icons.Default.Person, "")
-        },
-            label = { Text(text = "Profile") }, selected = (selectedIndex.value == 2), onClick = {
-                navController.navigate(ROUTE_LOGIN) {
+            label = { Text(text = "Contact") }, selected = (selectedIndex.value == 1), onClick = {
+                navController.navigate(ROUTE_ADD_STUDENTS) {
                     popUpTo(ROUTE_HOMES) { inclusive = true }
                 }})
     }

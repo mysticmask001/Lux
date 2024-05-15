@@ -16,8 +16,8 @@ import net.ezra.ui.contact.ContactScreen
 import net.ezra.ui.form.AddStudents
 import net.ezra.ui.home.HomeScreen
 import net.ezra.ui.home.HomesScreen
-import net.ezra.ui.login.LoginScreen
-import net.ezra.ui.login.SignupScreen
+//import net.ezra.ui.login.LoginScreen
+//import net.ezra.ui.login.SignupScreen
 import net.ezra.ui.ranch.RanchScreen
 import net.ezra.ui.mit.MitScreen
 
@@ -43,18 +43,12 @@ fun AppNavHost(
     ) {
 
 
-        composable(ROUTE_LOGIN) {
-            LoginScreen(navController)
-        }
+
 
         composable(ROUTE_HOME) {
             HomeScreen(navController)
         }
 
-
-        composable(ROUTE_SIGNUP) {
-            SignupScreen(navController)
-        }
 
         composable(ROUTE_HOMES) {
             HomesScreen(navController)
